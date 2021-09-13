@@ -1,4 +1,9 @@
 # GOP 
+We propose the GoP-mode acceleration technology to remove temporal redundancy. The current object detection neural network is a layer-based architecture from spatial domain point of view. From the temporal domain point of view, it is frame-based. Each frame must pass through all neural network layers for calculation. In addition to a large number of feature maps and weight values, there are many intermediate values of calculations that must be repeatedly sent in and out of the chip, resulting in slow computation speed. Nevertheless, there is a very high amount of redundancy existed between each frame of a video film. If it can be removed, a lot of calculation and data transmission can be saved without affecting the detection accuracy. 
+
+Our idea is to adopt a method similar to Group-of-Picture (GoP) in video compression when detecting objects in video sequences. Only a small number of key frames are detected completely, i.e., intra frames (I-frames), in a group. The remainders of the group, i.e., inter frames (P-frames), are predicted based on these few key picture detection results. As shown in Fig. 3, each GoP contains one I-frame and several P-frames. Since the execution time of prediction is much shorter than that of detection, the value of frames per second (fps) has been greatly increased while remaining the overall detection accuracy the same.
+
+<div align=center><img src="https://user-images.githubusercontent.com/50125053/133035858-c06c9e41-94fc-44bf-b610-1ec98d8b54f4.png"></div>
 
 ## Source
 * [Train](https://github.com/ZQPei/deep_sort_pytorch)
